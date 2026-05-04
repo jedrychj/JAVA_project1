@@ -14,7 +14,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 void main() {
-    Screen window = new Screen(500, 500);
+    Screen window = new Screen(700, 700);
     Random rand = new Random();
 
     List<Square> platformy = new ArrayList<>();
@@ -23,7 +23,7 @@ void main() {
     // Tworzenie egzekutora na 4 watki
     ScheduledExecutorService executor = Executors.newScheduledThreadPool(4);
 
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 7; i++) {
         int startY = (50 + (i * 80));
         int speedX = rand.nextInt(4) + 1;
         Square sq = new Square(10, startY, speedX, window);
@@ -33,13 +33,13 @@ void main() {
         executor.scheduleAtFixedRate(sq, 0, 20, TimeUnit.MILLISECONDS);
     }
 
-    for (int i = 0; i < 20; i++) {
-        int startX = rand.nextInt(450);
+    for (int i = 0; i < 350; i++) {
+        int startX = rand.nextInt(650);
         int speedX = rand.nextInt(6) - 3;
         if (speedX == 0) { speedX = 2; }
         int speedY = rand.nextInt(5) + 2;
 
-        Ball ball = new Ball(startX, 100, speedX, speedY, window, platformy, pilki);
+        Ball ball = new Ball(startX, 100+80*rand.nextInt(6), speedX, speedY, window, platformy, pilki);
         pilki.add(ball);
 
         // egzekutor dostaje zadanie

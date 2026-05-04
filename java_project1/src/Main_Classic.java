@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 void main() {
-    Screen window = new Screen(500, 500);
+    Screen window = new Screen(700, 700);
     Random rand = new Random(); // tworzymy losowa liczbe
 
     List<Square> platformy = new ArrayList<>();
     List<Ball> pilki = new ArrayList<>();
 
     //Square example = new Square(10, 10, window); // deklaracja watku kwadratu
-    for (int i=0; i<5; i++){ //deklaracja kilku prostokatow, dla kazdego tworzymy watek
+    for (int i=0; i<7; i++){ //deklaracja kilku prostokatow, dla kazdego tworzymy watek
         int startY = (50+(i*80)); // ustawienie prostoktow co 60 pikseli
         int speedX = rand.nextInt(4)+1; // nadanie losowej predkosci
         Square sq = new Square(10, startY, speedX, window);
@@ -26,13 +26,13 @@ void main() {
         sq.start();
     }
 
-    for (int i=0; i<20; i++){ //deklaracja kilku kulek, dla kazdej tworzymy watek
-        int startX = rand.nextInt(450); // losowa pozycja poczatkowa
+    for (int i=0; i<350; i++){ //deklaracja kilku kulek, dla kazdej tworzymy watek
+        int startX = rand.nextInt(650); // losowa pozycja poczatkowa
         int speedX = rand.nextInt(6)-3;
         if (speedX == 0) {speedX = 2;}
 
         int speedY = rand.nextInt(5)+2; // nadanie losowej predkosci
-        Ball ball = new Ball(startX, 100, speedX, speedY, window, platformy, pilki);
+        Ball ball = new Ball(startX, 100+80*rand.nextInt(6), speedX, speedY, window, platformy, pilki);
         pilki.add(ball);
         ball.start();
     }

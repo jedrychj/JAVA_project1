@@ -4,13 +4,11 @@
 // ====================================================================================================
 // ====================================================================================================
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
-
 
 void main() {
     Screen window = new Screen(500, 500);
@@ -28,7 +26,7 @@ void main() {
         sq.start();
     }
 
-    for (int i=0; i<8; i++){ //deklaracja kilku kulek, dla kazdej tworzymy watek
+    for (int i=0; i<20; i++){ //deklaracja kilku kulek, dla kazdej tworzymy watek
         int startX = rand.nextInt(450); // losowa pozycja poczatkowa
         int speedX = rand.nextInt(6)-3;
         if (speedX == 0) {speedX = 2;}
@@ -38,21 +36,11 @@ void main() {
         pilki.add(ball);
         ball.start();
     }
-
-
-    //example.start(); // start watku
-
-    // window.add(new JPanel()); // przy moich eksperymentach mi wyszlo ze musi byc jakies tlo, idk czemu
-
 }
 
 class Screen extends JFrame {
     int sizeX;
     int sizeY;
-
-    JLayeredPane layer;
-
-    JPanel background;
 
     public Screen(int x, int y) {
         this.sizeX = x;
@@ -60,8 +48,8 @@ class Screen extends JFrame {
 
         this.setSize(x,y);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("Okno");
-        this.setLayout(null); // @Janek to trzeba wpisać i masz wyswietlanie
+        this.setTitle("Animacja przy podejściu klasycznym");
+        this.setLayout(null);
         this.setVisible(true);
     }
 }
@@ -74,7 +62,6 @@ class Square extends Thread {
     int sizeY;
 
     int velX;
-    int velY;
 
     Screen s;
     JPanel graphic;
@@ -87,8 +74,6 @@ class Square extends Thread {
         this.cordY = startY; // tylko tak zeby sie nie nakladaly nawzajem, juz to implementujemy wyzej
 
         this.velX = speedX; // wersor predkosci, jakos znormalizowany, np ze dlugosc = 1
-        this.velY = 0; // chyba ze chcemy rozne predkosci, to w sumie nie powinno byc trudne
-        // wstepny kierunek predkosci tez mozna losowac chyba
 
         this.s = okno;
 
@@ -100,7 +85,6 @@ class Square extends Thread {
 
     @Override
     public void run() {
-        //this.s.add(this.graphic,1);
 
         while(true) { // przyklad z ruchomym kwadratem
             // tu kod ktory robi update kwadratu

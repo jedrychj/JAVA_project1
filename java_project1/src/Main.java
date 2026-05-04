@@ -33,7 +33,7 @@ void main() {
         executor.scheduleAtFixedRate(sq, 0, 20, TimeUnit.MILLISECONDS);
     }
 
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 20; i++) {
         int startX = rand.nextInt(450);
         int speedX = rand.nextInt(6) - 3;
         if (speedX == 0) { speedX = 2; }
@@ -54,6 +54,7 @@ class Screen extends JFrame {
     public Screen(int x, int y) {
         this.sizeX = x;
         this.sizeY = y;
+
         this.setSize(x, y);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Animacja z Egzekutorami");
